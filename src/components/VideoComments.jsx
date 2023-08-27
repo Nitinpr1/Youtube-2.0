@@ -54,22 +54,42 @@ const VideoComments = () => {
             }}
           >
             <Typography variant="h4">Comments</Typography>
-            <Button variant="contained" onClick={toggleShowAllComments}>
+            <Button
+              variant="contained"
+              onClick={toggleShowAllComments}
+              style={{ background: "red" }}
+            >
               {showAllComments ? "Hide Comments" : "Show All Comments"}
             </Button>
           </div>
           <div>
             {comments.length > 0 && (
-              <div>
-                <strong>{comments[0].author}</strong>:
+              <div
+                className="comment-box"
+                style={{
+                  marginBottom: "10px",
+
+                  padding: "15px",
+                }}
+              >
+                <strong style={{ color: "gray" }}>{comments[0].author}</strong>
+                :
                 <div dangerouslySetInnerHTML={{ __html: comments[0].text }} />
               </div>
             )}
             {showAllComments && (
               <div>
                 {comments.slice(1).map((comment, index) => (
-                  <div key={index}>
-                    <strong>{comment.author}</strong>:
+                  <div
+                    className="comment-box"
+                    key={index}
+                    style={{
+                      marginBottom: "10px",
+
+                      padding: "15px",
+                    }}
+                  >
+                    <strong style={{ color: "gray" }}>{comment.author}</strong>:
                     <div dangerouslySetInnerHTML={{ __html: comment.text }} />
                   </div>
                 ))}
